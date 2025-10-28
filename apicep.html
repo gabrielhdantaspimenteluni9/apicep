@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de CEP</title>
+    <style>
+         /*Design do que o usuário digitar*/
+         #cep {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2rem;
+            width: 300px;
+            border-radius: 5px;   
+        }
+
+        /*Estilizando o placeholder do input*/ 
+        #cep::placeholder {
+            font-family: 'Times New Roman', Times, serif;
+            color: #999;
+            font-size: 1rem;
+        }
+        /*Estilo do botão*/
+         #botão {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        /*Estilo do que mostra ao aparecer o CEP ou não*/
+        #resultado {
+            margin: 10px;
+            width: 200px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h3>Gostou? Faça uma consulta para verificar se entregamos no seu endereço agora!</h3>
+    <h1>Coloque seu CEP abaixo! &#128071; </h1>
+    <input type="text" id="cep" placeholder="Digite os 8 digitos do seu CEP aqui" maxlenght="8"><br>
+    <button onclick="consultarCEP()" id="botão" cursor="pointer">Se já digitou é só apertar aqui :D </button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function consultarCEP(){
+
+        var cep = document.getElementById("cep").value.replace(/\D/g, '');
+
+        if (cep.length !== 8){
+            document.getElementById("resultado").innerHTML = "Digitou com 8 dígitos mesmo??? &#129300;";
+
+            return; //Trava o código para ele não ficar rodando o cep errado
+        }
+
+        fetch(`https://viacep.com.br/ws/${cep}/json/`) //faz a requisição do site
+        .then(response => response.json())
+        .then(data => {
+            if (data.erro) {
+                document.getElementById("resultado").innerHTML = "Cep não encontrado";
+            } else {
+                document.getElementById("resultado").innerHTML = `<strong>Entrega disponpivel em:</strong> <br>
+                ${data.logradouro}, ${data.bairro}, <br>
+                ${data.localidade} - ${data.uf}<br>
+                CEP: ${data.cep}`;
+            }
+        })
+        .catch (error => {
+        document.getElementById("resultado").innerHTML = "Não foi possível localizar o seu CEP"
+        });
+    }
+    </script>
+</body>
+</html>
