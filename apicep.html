@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de CEP</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leds Company GrowTech</title>
+  <LInk rel="stylesheet" href="estilo.css/index.css"></LInk>
+
+<style> 
+/*
+PARTE DE CSS:
+DEFINIDO SÓ ESTILO DA CONSULTA DE CEP 
+ */
+        
          /*Design do que o usuário digitar*/
          #cep {
             font-family: Arial, Helvetica, sans-serif;
@@ -33,18 +40,99 @@
             width: 200px;
         }
     </style>
+
 </head>
-<body>
-    <h3>Gostou? Faça uma consulta para verificar se entregamos no seu endereço agora!</h3>
-    <h1>Coloque seu CEP abaixo! &#128071; </h1>
+
+ <!-- Menu -->
+
+  <body>
+    <div id="interface">
+      <head id="cabecalho">
+       
+        <img src="imagens/logo_leds02.png"/>  
+<nav id="menu">
+  <h1>Menu Principal</h1>
+  <ul type="disc">
+  <a href="index.html">INICIO </a> <br>
+<a href="cadastro.html">FALE CONOSCO</a>
+</ul>
+</nav>
+      </head>
+
+<aside id="text"> 
+
+    <!--
+    Inseri um item a mais apresentando a empresa, missão e valores
+    ***AINDA TEM QUE EDITAR DE ACORDO COM O QUE TA NO DOCUMENTO QUE A NAY FEZ***
+    -->
+
+    <div id="DivisãoQuemSomos">
+    <h1 id="QuemSomos"> Quem somos? &#x1FAB4; <!--esse é o código do emoji --></h1>
+
+    <p id="p1QuemSomos">A Leds Company GrowTech é uma empresa especializada em tecnologia de iluminação UV e 
+        LED inteligente para cultivo de plantas em ambientes internos. Nosso foco é oferecer soluções modernas e 
+        sustentáveis para quem deseja cultivar ervas, verduras, frutas e flores, mas não possui espaço, tempo ou 
+        acesso à luz solar natural.</p>
+
+    <p id="p2QuemSomos">Desenvolvemos sistemas de luz UV e LED controlados remotamente, permitindo que o usuário 
+        acompanhe e otimize o crescimento das plantas através de aplicativos ou assistentes 
+        inteligentes — de qualquer lugar, a qualquer hora.</p>
+
+    <p id="p3QuemSomos">Nosso principal objetivo é democratizar o cultivo indoor, tornando-o acessível, 
+        econômico e ecologicamente responsável. Queremos que qualquer pessoa, mesmo em ambientes urbanos e 
+        compactos, possa desfrutar do prazer de plantar e colher alimentos frescos, nutritivos e livres de 
+        agrotóxicos — com tecnologia, eficiência e sustentabilidade.</p>
+    </div>
+
+<h2 id="primeiro"> Por que as plantas precisam de luz UV?</h2>
+<img src="imagens/led-plantas_capa.jpg"/>
+<p>A luz ultravioleta estimula a produção de compostos fenólicos e flavonoides nas plantas, 
+aumentando sua resistência natural a pragas e doenças. Além disso, melhora o sabor, aroma
+ e valor nutricional dos frutos.</p>
+ 
+ <h2 id="segundo"><em>Led</em> vs. Lâmpadas tradicionais: a diferença no bolso</h2> 
+ <img src="imagens/led_plantas_interna.jpg"/>
+<p><em>LEDs</em> consomem até 80% menos energia que lâmpadas convencionais e duram 25x mais tempo. 
+Em um cultivo de 1m², a economia anual pode chegar a R$ 1.200 em energia elétrica.</p>
+
+<h2 id="terceiro">O espectro que as plantas realmente veem</h2>
+<img src="imagens/What-is-red-and-blue-LED-grow-light.webp"/>
+<p>Plantas utilizam principalmente as faixas azul (400-500nm) para crescimento vegetativo e 
+vermelha (600-700nm) para floração. A combinação correta pode acelerar o crescimento em até 40%.</p>
+
+<h2 id="quarto">Cultivo indoor: economia de água surpreendente</h2>
+<img src="imagens/led_img_4.png">
+<p>Sistemas de cultivo indoor com <em>LED</em> usam 95% menos água que agricultura tradicional. Isso porque
+ a evaporação é controlada e a água é recirculada no sistema.</p>
+
+ <h2 id="quinto"> o ano todo: mito ou realidade?</h2>
+<p>Com iluminação LED adequada, é possível ter até 6 colheitas por ano da mesma cultura, independente
+ da estação. Verduras folhosas podem ser colhidas a cada 30 dias.</p>
+
+ <h2 id="sexto">A temperatura que faz toda a diferença</h2>
+<p><em>LEDs</em> geram 70% menos calor que lâmpadas HPS, permitindo posicionamento mais próximo das plantas
+<em>(30-50cm) sem causar estresse térmico, maximizando a absorção de luz.</p>
+ </aside>
+
+  <!-- Rodapé -->
+  <footer>
+    © 2025 Leds Company GrowTech - Todos os direitos reservados
+  </footer>
+  </div>
+
+  <!--
+  PARTE DA API POR CEP
+  -->
+    <div id="DivConsultaDeCEP">
+    <h3 id="TextoAntesDeConsultaDoCEP">Gostou? Faça uma consulta para verificar se entregamos no seu endereço agora!</h3>
+    <h1 id="cabeçalhoCEP">Coloque seu CEP abaixo! &#128071; </h1>
     <input type="text" id="cep" placeholder="Digite os 8 digitos do seu CEP aqui" maxlenght="8"><br>
     <button onclick="consultarCEP()" id="botão" cursor="pointer">Se já digitou é só apertar aqui :D </button>
-
-    <div id="resultado"></div>
+    </div>
+    <div id="resultado"></div> <!-- Campo onde vai sair o resultado do CEP -->
 
     <script>
-        function consultarCEP(){
-
+        function consultarCEP(){       
         var cep = document.getElementById("cep").value.replace(/\D/g, '');
 
         if (cep.length !== 8){
@@ -70,5 +158,7 @@
         });
     }
     </script>
+
+
 </body>
 </html>
